@@ -13,16 +13,22 @@ configured local site URL, so visitors hitting the tunnel hostname get
 mixed-content errors, broken links, and redirect loops back to the
 unreachable local URL.
 
-This add-on installs a single must-use plugin, `ddev-share-helper-for-wp.php`,
-that rewrites URLs on the fly for tunneled requests only:
+This add-on installs a single
+[must-use plugin](https://developer.wordpress.org/advanced-administration/plugins/mu-plugins/),
+`ddev-share-helper-for-wp.php`, that rewrites URLs on the fly for tunneled
+requests only:
 
 - Local requests (`Host` = your `*.ddev.site` URL) are completely unaffected.
 - Tunneled requests (`Host` = the tunnel hostname) get every generated URL,
   and the final HTML/JSON output, rewritten to the tunnel host — with no
   changes to the database.
 
-Because it's a must-use plugin, it loads automatically and needs no
-activation step.
+A must-use plugin (or "mu-plugin") is a plain PHP file placed in
+`wp-content/mu-plugins/`. WordPress loads every file in that directory
+automatically, before normal plugins — there is nothing to activate, and it
+never shows up as deactivatable in the admin plugin list. That makes it a
+good fit here: install the add-on and sharing just works. Removing the
+add-on deletes the file, which fully removes the plugin.
 
 ## Requirements
 
