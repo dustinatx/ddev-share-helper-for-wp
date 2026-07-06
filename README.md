@@ -1,4 +1,4 @@
-# ddev-share-helper-for-wp
+# DDEV Share Helper for WordPress
 
 [![tests](https://github.com/dustinatx/ddev-share-helper-for-wp/actions/workflows/tests.yml/badge.svg)](https://github.com/dustinatx/ddev-share-helper-for-wp/actions/workflows/tests.yml)
 [![project is maintained](https://img.shields.io/maintenance/yes/2026.svg)](https://github.com/dustinatx/ddev-share-helper-for-wp)
