@@ -1,0 +1,44 @@
+# Details about this file: https://docs.ddev.com/en/stable/users/extend/creating-add-ons/
+
+name: share-helper-for-wp
+
+# Bail out early (with a clear message) if this isn't a WordPress project,
+# since the mu-plugin only makes sense there.
+pre_install_actions:
+  - |
+    #ddev-description:Verify this is a WordPress project
+    if [ "${DDEV_PROJECT_TYPE}" != "wordpress" ]; then
+      echo "ddev-share-helper-for-wp only supports WordPress projects (this project is type '${DDEV_PROJECT_TYPE}')."
+      exit 1
+    fi
+
+# Copied into the project's .ddev directory; this is the source copy that
+# post_install_actions below installs into wp-content/mu-plugins.
+project_files:
+  - ddev-share-helper-for-wp.php
+
+ddev_version_constraint: '>= v1.22.0'
+
+# mu-plugins load automatically, so no activation step is needed - just get
+# the file into place.
+post_install_actions:
+  - |
+    #ddev-description:Install mu-plugin into wp-content/mu-plugins
+    mu_plugins_dir="${DDEV_APPROOT}/${DDEV_DOCROOT}/wp-content/mu-plugins"
+    mkdir -p "${mu_plugins_dir}"
+    cp "${DDEV_APPROOT}/.ddev/ddev-share-helper-for-wp.php" "${mu_plugins_dir}/ddev-share-helper-for-wp.php"
+
+# The .ddev/ddev-share-helper-for-wp.php copy (in project_files) is removed
+# automatically because it carries #ddev-generated. The copy under
+# wp-content/mu-plugins/ lives outside .ddev/, so it needs its own cleanup.
+removal_actions:
+  - |
+    #ddev-description:Remove mu-plugin from wp-content/mu-plugins
+    installed_file="${DDEV_APPROOT}/${DDEV_DOCROOT}/wp-content/mu-plugins/ddev-share-helper-for-wp.php"
+    if [ -f "${installed_file}" ]; then
+      if grep -q '#ddev-generated' "${installed_file}"; then
+        rm -f "${installed_file}"
+      else
+        echo "Not removing '${installed_file}' because it no longer contains #ddev-generated (it may have been modified); delete it manually if that's safe."
+      fi
+    fi
