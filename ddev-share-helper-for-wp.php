@@ -4,7 +4,7 @@
 /**
  * Plugin Name: DDEV Share Helper for WP
  * Description: Makes WordPress work seamlessly through `ddev share` tunnels (cloudflared/ngrok) by rewriting URLs at runtime. No database changes. Inspired by LocalWP's Live Link Helper.
- * Version: 1.0
+ * Version: 1.0.1
  * License: GPLv2 or later
  *
  * How it works:
@@ -45,6 +45,12 @@ class DDEV_Share_Helper_For_WP {
 		}
 
 		$this->tunnel_host = $_SERVER['HTTP_HOST'];
+
+		// The Host header is reflected into every rewritten URL, so refuse
+		// anything that doesn't look like a plain hostname[:port].
+		if ( ! preg_match( '/^[a-z0-9.-]+(:\d+)?$/i', $this->tunnel_host ) ) {
+			return;
+		}
 
 		// Not a tunneled request — stay completely inert.
 		if ( $this->tunnel_host === $this->local_host || ! $this->is_tunnel_request() ) {

@@ -24,6 +24,16 @@ that rewrites URLs on the fly for tunneled requests only:
 Because it's a must-use plugin, it loads automatically and needs no
 activation step.
 
+## Requirements
+
+- A DDEV project of type `wordpress` with a standard layout, i.e. `wp-content/`
+  inside the docroot. Composer-based layouts that relocate `wp-content` (such
+  as Bedrock's `web/app/`) are not currently supported.
+- `ddev share` uses [ngrok](https://ngrok.com) by default, which requires a
+  free ngrok account and authtoken — see the
+  [DDEV sharing docs](https://docs.ddev.com/en/stable/users/topics/sharing/)
+  for setup and for alternatives like cloudflared.
+
 ## Installation
 
 ```bash
