@@ -32,9 +32,11 @@ add-on deletes the file, which fully removes the plugin.
 
 ## Requirements
 
-- A DDEV project of type `wordpress` with a standard layout, i.e. `wp-content/`
-  inside the docroot. Composer-based layouts that relocate `wp-content` (such
-  as Bedrock's `web/app/`) are not currently supported.
+- A DDEV project of type `wordpress` with a standard WordPress installation —
+  one where the `wp-content/` directory sits alongside `wp-admin/` and
+  `wp-includes/`, as in a default install. Composer-based setups that move
+  `wp-content` somewhere else (such as Bedrock, which uses `web/app/`) are
+  not currently supported.
 - `ddev share` uses [ngrok](https://ngrok.com) by default, which requires a
   free ngrok account and authtoken — see the
   [DDEV sharing docs](https://docs.ddev.com/en/stable/users/topics/sharing/)
