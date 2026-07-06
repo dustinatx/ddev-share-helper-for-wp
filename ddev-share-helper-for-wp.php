@@ -2,7 +2,7 @@
 // #ddev-generated: installed by the ddev-share-helper-for-wp DDEV add-on.
 // Re-running `ddev add-on get` updates this file; `ddev add-on remove` deletes it.
 /**
- * Plugin Name: DDEV Live Link Helper
+ * Plugin Name: DDEV Share Helper for WP
  * Description: Makes WordPress work seamlessly through `ddev share` tunnels (cloudflared/ngrok) by rewriting URLs at runtime. No database changes. Inspired by LocalWP's Live Link Helper.
  * Version: 1.0
  * License: GPLv2 or later
@@ -20,7 +20,7 @@
  *     5. disables canonical redirects and marks responses as privately cacheable.
  */
 
-class DDEV_Live_Link_Helper {
+class DDEV_Share_Helper_For_WP {
 
 	/** @var string Host[:port] of the DDEV primary URL, e.g. "mobile.ddev.site" */
 	private $local_host;
@@ -234,4 +234,4 @@ class DDEV_Live_Link_Helper {
 	}
 }
 
-new DDEV_Live_Link_Helper();
+new DDEV_Share_Helper_For_WP();

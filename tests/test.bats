@@ -36,6 +36,15 @@ setup() {
   assert_success
   run ddev start -y
   assert_success
+
+  # The health checks need an actual WordPress installation (not just an
+  # empty ddev project) so wp-cli has something to load the mu-plugin into.
+  run ddev exec wp core download --force
+  assert_success
+  run ddev exec wp config create --dbname=db --dbuser=db --dbpass=db --dbhost=db --force --skip-check
+  assert_success
+  run ddev exec wp core install --url="https://${PROJNAME}.ddev.site" --title=Test --admin_user=admin --admin_password=admin --admin_email=admin@example.com
+  assert_success
 }
 
 health_checks() {
@@ -44,9 +53,9 @@ health_checks() {
   run ddev exec test -f wp-content/mu-plugins/ddev-share-helper-for-wp.php
   assert_success
 
-  run ddev exec wp mu-plugin list --format=csv
+  run ddev exec wp eval 'echo class_exists("DDEV_Share_Helper_For_WP") ? "loaded" : "missing";'
   assert_success
-  assert_output --partial "ddev-share-helper-for-wp"
+  assert_output --partial "loaded"
 }
 
 teardown() {
