@@ -196,6 +196,7 @@ class DDEV_Share_Helper_For_WP {
 			}
 		}
 
+		$html = str_replace( 'www.' . $this->local_host, $this->tunnel_host, $html );
 		$html = str_replace( $this->local_host, $this->tunnel_host, $html );
 		$html = str_replace(
 			array( 'http://' . $this->tunnel_host, 'http:\/\/' . $this->tunnel_host ),
