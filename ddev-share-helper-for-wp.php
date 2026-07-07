@@ -4,7 +4,7 @@
 /**
  * Plugin Name: DDEV Share Helper for WP
  * Description: Makes WordPress work seamlessly through `ddev share` tunnels (cloudflared/ngrok) by rewriting URLs at runtime. No database changes. Inspired by LocalWP's Live Link Helper.
- * Version: 1.0.1
+ * Version: 1.0.2
  * License: GPLv2 or later
  *
  * How it works:
@@ -132,6 +132,7 @@ class DDEV_Share_Helper_For_WP {
 			'theme_root_uri',
 			'wp_get_attachment_url',
 			'wp_get_attachment_thumb_url',
+			'wp_get_attachment_image_src',
 			'upload_dir',
 			'preview_post_link',
 		);
