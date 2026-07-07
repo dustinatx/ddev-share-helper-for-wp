@@ -1,7 +1,9 @@
 # DDEV Share Helper for WordPress
 
+[![add-on registry](https://img.shields.io/badge/DDEV-Add--on_Registry-blue)](https://addons.ddev.com)
 [![tests](https://github.com/dustinatx/ddev-share-helper-for-wp/actions/workflows/tests.yml/badge.svg)](https://github.com/dustinatx/ddev-share-helper-for-wp/actions/workflows/tests.yml)
-[![project is maintained](https://img.shields.io/maintenance/yes/2026.svg)](https://github.com/dustinatx/ddev-share-helper-for-wp)
+[![last commit](https://img.shields.io/github/last-commit/dustinatx/ddev-share-helper-for-wp)](https://github.com/dustinatx/ddev-share-helper-for-wp/commits)
+[![release](https://img.shields.io/github/v/release/dustinatx/ddev-share-helper-for-wp)](https://github.com/dustinatx/ddev-share-helper-for-wp/releases/latest)
 
 A [DDEV](https://ddev.com) add-on for WordPress that makes `ddev share` (cloudflared/ngrok tunnels) work out of the box.
 
