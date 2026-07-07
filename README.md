@@ -37,6 +37,7 @@ add-on deletes the file, which fully removes the plugin.
   `wp-includes/`, as in a default install. Composer-based setups that move
   `wp-content` somewhere else (such as Bedrock, which uses `web/app/`) are
   not currently supported.
+- Multisite installs aren't currently supported.
 - `ddev share` uses [ngrok](https://ngrok.com) by default, which requires a
   free ngrok account and authtoken — see the
   [DDEV sharing docs](https://docs.ddev.com/en/stable/users/topics/sharing/)
